@@ -63,8 +63,8 @@ window.addEventListener('DOMContentLoaded', function () {
             let t = getTimeRemaining(endtime);
 
             function zero(number) {
-                if (number <=9) {
-                    return '0' +number;
+                if (number <= 9) {
+                    return '0' + number;
                 } else {
                     return number;
                 }
@@ -84,5 +84,36 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     setClock('timer', deadline);
+
+
+    // model
+
+    let more = document.querySelector('.more');
+    let overlay = document.querySelector('.overlay');
+    let close = document.querySelector('.popup-close');
+    let moreTab = document.querySelectorAll('.description-btn');
+    var t = this;
+
+    function modelWindow() {
+        overlay.style.display = 'block';
+        t.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    }
+
+    moreTab.forEach(function (item) {
+        item.addEventListener('click', function () {
+            modelWindow.call(this);
+        });
+    });
+
+    more.addEventListener('click', function () {
+        modelWindow.call(this);
+    });
+    
+    close.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        more.classList.add('more-splash');
+        document.body.style.overflow = '';
+    });
 
 });
